@@ -90,9 +90,9 @@ function setItemChecked(e) {
 }
 
 function setSelectFileEvent(e) {
-  // TODO: tomorrow
-  // set display: block if data-active === 'true';
-  // set display: none if data-active === 'false';
+  // if data-active === 'true' show the button;
+  // if data-active === 'false' hide the button;
+  e.target.setAttribute('data-active', 'false');
   const thumbnailContainer = document.querySelectorAll('.thumbnail-container');
   thumbnailContainer.forEach((item) => {
     if (item.getAttribute('data-active') === 'true') {

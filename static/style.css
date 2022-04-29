@@ -29,7 +29,7 @@ header > h1 {
   color: white;
 }
 
-header > .action-button {
+.action-button {
   position: absolute;
   right: 60px;
   color: white;
@@ -37,6 +37,10 @@ header > .action-button {
   border-radius: 14px;
   border: none;
   padding: 4px 8px;
+}
+
+.action-button[data-active="false"] {
+  visibility: hidden;
 }
 
 .upload-container {
@@ -74,7 +78,7 @@ main {
   width: 100%;
 }
 
-.thumbnail-container[data-active=true]::after {
+.thumbnail-container[data-active="true"]::after {
   position: absolute;
   bottom: var(--corner-position);
   right: var(--corner-position);
