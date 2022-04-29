@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="./static/script.js"></script>
+    <title>Photo Gallery</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1 id="appTitle">??張照片</h1>
+        <button id="selectionButton" class="action-button" data-active="true">選取</button>
+        <button id="deletionButton" class="action-button" data-active="false">刪除</button>
+        <div class="upload-container">
+          <label for="fileInput" class="flex-col-center"><i data-feather="plus"></i></label>
+          <input
+          type="file"
+          id="fileInput"
+          name="fileInput"
+          accept="image/png, image/jpeg"
+          multiple="multiple"
+          />
+        </div>
+      </header>
+      <main id="fileContainer"></main>
+      <footer>
+        <div class="flex-col-center">
+          <i data-feather="image"></i>
+          <small>圖庫</small>
+        </div>
+        <div class="flex-col-center">
+          <i data-feather="video"></i>
+          <small>影片</small>
+        </div>
+        <div class="flex-col-center">
+          <i data-feather="book"></i>
+          <small>相簿</small>
+        </div>
+      </footer>
+    </div>
+</body>
+</html>

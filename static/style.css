@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+
+:root {
+  --corner-position: 0.4rem;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,1) 0%,
+    rgba(74,74,74,1) 25%,
+    rgba(255,255,255,0.65) 100%);
+}
+
+header > h1 {
+  color: white;
+}
+
+header > .action-button {
+  position: absolute;
+  right: 60px;
+  color: white;
+  background-color: gray;
+  border-radius: 14px;
+  border: none;
+  padding: 4px 8px;
+}
+
+.upload-container {
+  position: absolute;
+  right: 20px;
+  border-radius: 50%;
+  color: white;
+  background-color: gray;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-container > input {
+  display: none;
+}
+
+main {
+  width: 100vw;
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbnail-container {
+  position: relative;
+  width: calc(100vw/3);
+  height: calc(100vw/3);
+  color: white;
+}
+
+.thumbnail-container > .thumbnail {
+  width: 100%;
+}
+
+.thumbnail-container[data-active=true]::after {
+  position: absolute;
+  bottom: var(--corner-position);
+  right: var(--corner-position);
+  content: "";
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 20%;
+  height: 20%;
+}
+
+footer {
+  position: sticky;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 16px;
+  background-color: white;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: calc(var(--corner-position) + 0.1rem);
+  right: calc(var(--corner-position) + 0.1rem);
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
