@@ -60,9 +60,11 @@ header > h1 {
   display: none;
 }
 
+/* BUG: min-height is asked in some cases */
 main {
-  width: 100vw;
   flex: 1 0 auto;
+  width: 100vw;
+  min-height: 82.4vh;
   display: flex;
   flex-wrap: wrap;
 }
@@ -71,7 +73,7 @@ main {
   position: relative;
   width: calc(100vw/3);
   height: calc(100vw/3);
-  color: white;
+  color: blue;
 }
 
 .thumbnail-container > .thumbnail {
@@ -83,12 +85,13 @@ main {
   bottom: var(--corner-position);
   right: var(--corner-position);
   content: "";
-  border: 1px solid white;
+  border: 1px solid blue;
   border-radius: 50%;
   width: 20%;
   height: 20%;
 }
 
+/* BUG: sticky and bottom isn't working in some cases */
 footer {
   position: sticky;
   bottom: 0;
