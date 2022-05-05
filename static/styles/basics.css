@@ -1,0 +1,61 @@
+.bottom-right {
+  position: absolute;
+  bottom: calc(var(--corner-position) + 0.1rem);
+  right: calc(var(--corner-position) + 0.1rem);
+}
+
+.top-right {
+  position: absolute;
+  top: calc(var(--corner-position) + 0.1rem);
+  right: calc(var(--corner-position) + 0.1rem);
+}
+
+.absolute {
+  position: absolute;
+}
+  
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-col-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-col-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-black-trans {
+  background-color: rgba(0,0,0, .3);
+}
+
+.text-white {
+  color: white;
+}
+
+.events-none {
+  pointer-events: none;
+}
+
+.events-fill {
+  pointer-events: fill;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

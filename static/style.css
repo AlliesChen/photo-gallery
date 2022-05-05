@@ -1,18 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+@import url(./styles/basics.css);
 
 :root {
   --corner-position: 0.4rem;
+  --font-noto-sans: 'Noto Sans TC', sans-serif;
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: var(--font-noto-sans);
 }
 
 body {
   margin: 0;
 }
 
-header {
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app--header {
   position: sticky;
+  z-index: 2;
   top: 0;
   width: 100vw;
   display: flex;
@@ -25,11 +36,11 @@ header {
     rgba(255,255,255,0.65) 100%);
 }
 
-header > h1 {
+.app--header > h1 {
   color: white;
 }
 
-.action-button {
+.button--small {
   position: absolute;
   right: 60px;
   color: white;
@@ -37,9 +48,19 @@ header > h1 {
   border-radius: 14px;
   border: none;
   padding: 4px 8px;
+  cursor: pointer;
 }
 
-.action-button[data-active="false"] {
+.button--large {
+  margin: 2rem;
+  padding: 1rem 0;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+button[data-active="false"] {
   visibility: hidden;
 }
 
@@ -60,12 +81,11 @@ header > h1 {
   display: none;
 }
 
-/* BUG: min-height is asked in some cases */
-main {
+.app--main {
   flex: 1 0 auto;
   width: 100vw;
-  min-height: 82.4vh;
   display: flex;
+  align-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -73,11 +93,11 @@ main {
   position: relative;
   width: calc(100vw/3);
   height: calc(100vw/3);
-  color: blue;
+  color: white;
 }
 
-.thumbnail-container > .thumbnail {
-  width: 100%;
+.thumbnail-container > div {
+  z-index: 1;
 }
 
 .thumbnail-container[data-active="true"]::after {
@@ -85,14 +105,13 @@ main {
   bottom: var(--corner-position);
   right: var(--corner-position);
   content: "";
-  border: 1px solid blue;
   border-radius: 50%;
+  background-color: blue;
   width: 20%;
   height: 20%;
 }
 
-/* BUG: sticky and bottom isn't working in some cases */
-footer {
+.app--footer {
   position: sticky;
   bottom: 0;
   width: 100vw;
@@ -103,14 +122,26 @@ footer {
   background-color: white;
 }
 
-.bottom-right {
-  position: absolute;
-  bottom: calc(var(--corner-position) + 0.1rem);
-  right: calc(var(--corner-position) + 0.1rem);
+.mask {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
 }
 
-.flex-col-center {
+.mask > header, .mask > footer {
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 6rem;
+  color: white;
+}
+
+.mask > section {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
