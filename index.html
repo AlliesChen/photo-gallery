@@ -29,17 +29,30 @@
       </header>
       <main id="fileContainer" class="app--main"></main>
       <footer class="app--footer">
-        <div class="flex-col-center">
-          <i data-feather="image"></i>
-          <small>圖庫</small>
+        <div class="flex-around">
+          <div class="flex-col-center text-cyan">
+            <i data-feather="image"></i>
+            <small>圖庫</small>
+          </div>
+          <div class="flex-col-center">
+            <i data-feather="video"></i>
+            <small>影片</small>
+          </div>
+          <div class="flex-col-center">
+            <i data-feather="book"></i>
+            <small>相簿</small>
+          </div>
         </div>
-        <div class="flex-col-center">
-          <i data-feather="video"></i>
-          <small>影片</small>
-        </div>
-        <div class="flex-col-center">
-          <i data-feather="book"></i>
-          <small>相簿</small>
+        <div class="flex-between p-1 none">
+          <div class="flex">
+            <i data-feather="external-link"></i>
+          </div>
+          <div>
+            <p class="text-xl m-0">已選取<span id="selectedCount">0</span>個項目</p>
+          </div class="flex">
+          <button id="deletionButton" disabled="true" class="flex">
+            <i data-feather="trash-2"></i>
+          </button>
         </div>
       </footer>
     </div>

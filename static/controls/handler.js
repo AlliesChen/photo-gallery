@@ -48,10 +48,17 @@ export async function getFileNames(url) {
   }
 }
 
+export function toggleFooter() {
+  const footer = Doc.query("footer.app--footer");
+  for (let i = 0; i < footer.children.length; i += 1) {
+    footer.children[i].classList.toggle("none");
+  }
+}
+
 export function createImage(source) {
   const image = document.createElement("img");
   image.setAttribute("src", source);
-  image.setAttribute("class", "w-full");
+  image.setAttribute("class", "w-100");
   return image;
 }
 
@@ -71,22 +78,39 @@ export function setThumbnails(sources) {
 export function setItemChecked(e) {
   if (e.target.nodeName !== "IMG") return;
   const container = e.target.closest(".thumbnail-container");
+  const selectedCount = Doc.getEl("selectedCount");
+  const deletionBtn = Doc.getEl("deletionButton");
+  let counter = parseInt(selectedCount.textContent);
   const containerCheckedStatus = container.getAttribute("data-checked");
   if (containerCheckedStatus === null || containerCheckedStatus === "false") {
     container.setAttribute("data-checked", "true");
     const newSvg = Doc.create("div");
     newSvg.setAttribute("class", "flex-col-center bottom-right");
+    newSvg.setAttribute("data-temp", "true");
     newSvg.innerHTML = feather.icons.check.toSvg({ class: "icon-check" });
     container.appendChild(newSvg);
+    counter += 1;
   } else {
     container.setAttribute("data-checked", "false");
     container.removeChild(container.lastChild);
+    counter -= 1;
+  }
+  selectedCount.textContent = counter;
+
+  if (counter && deletionBtn.getAttribute("disabled")) {
+    deletionBtn.removeAttribute("disabled");
+  } else if (counter === 0) {
+    deletionBtn.setAttribute("disabled", "true");
   }
 }
 
 export function cancelSelection() {
   const thumbnailContainer = Doc.queryAll(".thumbnail-container");
   thumbnailContainer.forEach((item) => {
+    if (item.matches("[data-checked='true']")) {
+      // remove the svg container(check icon)
+      item.removeChild(item.lastChild);
+    }
     item.setAttribute("data-checked", "false");
     item.setAttribute("data-active", "false");
   });

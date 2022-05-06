@@ -8,9 +8,11 @@ import FileHandler, {
   setAppTitle,
   cancelSelection,
   setItemChecked,
+  toggleFooter,
 } from "./controls/handler.js";
 
-import { ImageReader, DeletionPage } from "./views/pages.js";
+import { ImageReader } from "./views/ImageReader.js";
+import { DeletionPage } from "./views/DeletionPage.js";
 
 async function initApp() {
   // TODO: del
@@ -40,21 +42,30 @@ async function setFileInputUploadEvent(e) {
   setAppTitle();
 }
 
-function setCancelSelectionEvent(e) {
+async function setCancelSelectionEvent(e) {
+  const mainContent = Doc.getEl("fileContainer");
+  const deletionBtn = Doc.getEl("deletionButton");
+  const { open } = await ImageReader;
   cancelSelection();
   // NOTE: data-active === 'true' show the button;
   // NOTE: data-active === 'false' hide the button;
   e.target.setAttribute("data-active", "false");
+  Doc.getEl("fileInput").removeAttribute("disabled");
   Doc.getEl("selectionButton").setAttribute("data-active", "ture");
+  mainContent.addEventListener("click", open);
+  deletionBtn.removeEventListener("click", DeletionPage.open);
+  toggleFooter();
 }
 
 async function setSelectFileEvent(e) {
   const thumbnailContainer = Doc.queryAll(".thumbnail-container");
   const mainContent = Doc.getEl("fileContainer");
+  const deletionBtn = Doc.getEl("deletionButton");
   const { open } = await ImageReader;
   // NOTE: data-active === 'true' show the button;
   // NOTE: data-active === 'false' hide the button;
   e.target.setAttribute("data-active", "false");
+  Doc.getEl("fileInput").setAttribute("disabled", "true");
   Doc.getEl("cancelButton").setAttribute("data-active", "ture");
   thumbnailContainer.forEach((item) => {
     if (item.getAttribute("data-active") === "true") {
@@ -63,9 +74,10 @@ async function setSelectFileEvent(e) {
       item.setAttribute("data-active", "true");
     }
   });
-  Doc.getEl("fileContainer").addEventListener("click", setItemChecked);
   mainContent.removeEventListener("click", open);
-  DeletionPage.open();
+  mainContent.addEventListener("click", setItemChecked);
+  toggleFooter();
+  deletionBtn.addEventListener("click", DeletionPage.open);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

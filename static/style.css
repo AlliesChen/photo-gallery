@@ -13,6 +13,11 @@ body {
   margin: 0;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 #app {
   width: 100vw;
   height: 100vh;
@@ -52,12 +57,17 @@ body {
 }
 
 .button--large {
-  margin: 2rem;
+  font-size: 1rem;
+  margin-top: 1rem;
   padding: 1rem 0;
   border: none;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: rgb(255,255,255);
   cursor: pointer;
+}
+
+.button--large:hover {
+  background-color: rgba(255,255,255,0.8);
 }
 
 button[data-active="false"] {
@@ -115,9 +125,6 @@ button[data-active="false"] {
   position: sticky;
   bottom: 0;
   width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   padding-bottom: 16px;
   background-color: white;
 }
