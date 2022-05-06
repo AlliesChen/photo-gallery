@@ -75,6 +75,8 @@ const DeletionPage = (() => {
         mainContent.removeChild(imgContainer);
       });
       setAppTitle();
+      Doc.getEl("selectedCount").textContent = "0";
+      Doc.getEl("deletionButton").setAttribute("disabled", "true");
       Doc.getEl("app").addEventListener("click", open);
       return deleteFiles;
     } catch (err) {

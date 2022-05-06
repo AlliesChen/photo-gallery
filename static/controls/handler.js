@@ -69,7 +69,7 @@ export function setThumbnails(sources) {
     container.setAttribute("class", "thumbnail-container");
     // control to show a little circle on bottom right for tick-on
     container.setAttribute("data-active", "false");
-    container.appendChild(img);
+    container.prepend(img);
     return container;
   });
   return imgEls;
@@ -114,6 +114,8 @@ export function cancelSelection() {
     item.setAttribute("data-checked", "false");
     item.setAttribute("data-active", "false");
   });
+  Doc.getEl("selectedCount").textContent = "0";
+  Doc.getEl("deletionButton").setAttribute("disabled", "true");
   Doc.getEl("fileContainer").removeEventListener("click", setItemChecked);
 }
 

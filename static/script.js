@@ -1,6 +1,3 @@
-// TODO: del
-console.log("load script");
-
 import FileHandler, {
   Doc,
   uploadFiles,
@@ -15,8 +12,6 @@ import { ImageReader } from "./views/ImageReader.js";
 import { DeletionPage } from "./views/DeletionPage.js";
 
 async function initApp() {
-  // TODO: del
-  console.log("initial application");
   const imgNames = (await FileHandler).imgNames;
   const mainContent = Doc.getEl("fileContainer");
   const images = setThumbnails(imgNames);
@@ -81,8 +76,6 @@ async function setSelectFileEvent(e) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // TODO: del
-  console.log("load DOM content");
   // Having feather icon to replace <i> tags with its icons
   feather.replace();
   const fileInput = Doc.getEl("fileInput");
