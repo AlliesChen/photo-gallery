@@ -29,11 +29,13 @@ const ImageReader = (async () => {
 
   function setFooter(name) {
     footer.setAttribute("class", "text-xl");
-    // transform from fileName to yyyy/mm/dd
-    footer.textContent = `${name.substring(0, 4)}/${name.substring(
-      4,
-      6
-    )}/${name.substring(6, 8)}`;
+    // transform from fileName to yyyy/mm/dd hh:mm:ss
+    footer.textContent = `
+    ${name.substring(0, 4)}/
+    ${name.substring(4, 6)}/
+    ${name.substring(6, 8)} ${name.substring(8, 10)}:
+    ${name.substring(10, 12)}:
+    ${name.substring(12, 14)}`;
   }
 
   function setSwipe(e) {
