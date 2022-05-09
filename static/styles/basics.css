@@ -6,8 +6,8 @@
 
 .top-right {
   position: absolute;
-  top: calc(var(--corner-position) + 0.1rem);
-  right: calc(var(--corner-position) + 0.1rem);
+  top: calc(var(--corner-position) + 1.5rem);
+  right: calc(var(--corner-position) + 0.5rem);
 }
 
 .absolute {

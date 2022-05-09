@@ -23,10 +23,12 @@ const ImageReader = (async () => {
   }
 
   function setHeader() {
+    header.setAttribute("class", "text-xl");
     header.textContent = `${index + 1}/${fileNames.length}`;
   }
 
   function setFooter(name) {
+    footer.setAttribute("class", "text-xl");
     // transform from fileName to yyyy/mm/dd
     footer.textContent = `${name.substring(0, 4)}/${name.substring(
       4,
@@ -77,7 +79,10 @@ const ImageReader = (async () => {
     app.appendChild(container);
   }
   container.setAttribute("class", "mask flex-col-between bg-black");
-  cancelButton.setAttribute("class", "flex-col-center top-right text-white");
+  cancelButton.setAttribute(
+    "class",
+    "icon--large flex-col-center top-right text-white"
+  );
   cancelButton.innerHTML = feather.icons.x.toSvg({ class: "icon-x" });
   cancelButton.addEventListener("click", close);
   return { open };

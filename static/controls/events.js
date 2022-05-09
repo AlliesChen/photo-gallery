@@ -18,8 +18,9 @@ export async function setFileInputUploadEvent(e) {
   const newFilesNames = response.data;
   const mainContent = Doc.getEl("fileContainer");
   const newFiles = setThumbnails(newFilesNames);
-  newFiles.forEach((file) => {
-    mainContent.insertBefore(file, mainContent.firstChild);
+  const orderedFiles = newFiles.reverse();
+  orderedFiles.forEach((file) => {
+    mainContent.prepend(file);
   });
   (await FileHandler).imgNames.unshift(...newFilesNames);
   setAppTitle();
